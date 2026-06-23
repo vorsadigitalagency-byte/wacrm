@@ -20,10 +20,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "wacrm",
-    template: "%s — wacrm",
+    default: "Vorsa CRM | WhatsApp Inbox",
+    template: "%s | Vorsa CRM",
   },
-  description: "Self-hostable CRM template for WhatsApp.",
+  description: "WhatsApp inbox that grows your business — by Vorsa Digital.",
   robots: {
     index: false,
     follow: false,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#020617",
+  themeColor: "#0a0a0a",
   colorScheme: "dark light",
 };
 
@@ -61,6 +61,10 @@ const THEME_BOOT_SCRIPT = `
     var THEME_DEFAULT = ${JSON.stringify(DEFAULT_THEME)};
     var THEMES = ${JSON.stringify(THEME_IDS)};
     var savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === "violet") {
+      savedTheme = THEME_DEFAULT;
+      localStorage.setItem(THEME_KEY, THEME_DEFAULT);
+    }
     d.dataset.theme = THEMES.indexOf(savedTheme) !== -1 ? savedTheme : THEME_DEFAULT;
 
     var MODE_KEY = ${JSON.stringify(MODE_STORAGE_KEY)};
